@@ -17,19 +17,25 @@ const seanBigBox = {
   marginLeft: '2%',
   width: '96%',
   border: '1px dotted red',
-  height: '300px',
-  display: 'flex'
+  height: '100vh',
+  display: 'inline-block'
 }
 
 const testStyleBox = {
-  width: '50%',
-  height: '100%',
+  width: '45%',
+  height: '50%',
+  marginLeft: '2%',
+  marginBottom: '2%',
   border: '1px dotted red',
-  display: 'flex',
+  display: 'inline-block',
 }
 
+const picStyle = {
+  width: '100%',
+  height: '100%',
+}
 
-
+const imgSrc = '/static/beforeTurtle.jpeg';
 
 class App extends React.Component {
   constructor(props) {
@@ -65,22 +71,38 @@ class App extends React.Component {
       <MuiThemeProvider>
         <div>
           <h1>Item List</h1>
-          <List items={this.state.items}/>
-              <SeanGridList />
+              {/* <SeanGridList /> */}
+
+          <div style={seanBigBox}>
+            <div>
+              <div style={testStyleBox}><img src={imgSrc} style={picStyle}/></div>
+              <div style={testStyleBox}><img src={imgSrc} style={picStyle}/></div>
+            </div>
+            <div style={testStyleBox}><img src={imgSrc} style={picStyle}/></div>
+            <div style={testStyleBox}>
+
+              <SpaceThreshold percentOccupied={this.state.percentOccupied} />
+              {/* <p>Placeholder for testing occupancy %</p> */}
+              {/* <input 
+                type="number" 
+                name="percentOccupied" 
+                value={this.state.percentOccupied} 
+                onChange={this.handleChange.bind(this)}
+              >
+              </input> */}
+
+
+            </div>
+
+          </div>
+
+          
 
           <Elevator/>
           <UpAndDownPanel />
           <FloorsPanel />
           <BeforeImage />
-          <SpaceThreshold percentOccupied={this.state.percentOccupied} />
-          <p>Placeholder for testing occupancy %</p>
-          <input 
-            type="number" 
-            name="percentOccupied" 
-            value={this.state.percentOccupied} 
-            onChange={this.handleChange.bind(this)}
-          >
-          </input>
+
         </div>
       </MuiThemeProvider>
     );
