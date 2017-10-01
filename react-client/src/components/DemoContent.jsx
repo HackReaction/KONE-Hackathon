@@ -63,7 +63,7 @@ class DemoContent extends React.Component {
     return (
       <div style={styles.wrapper}>
         <div style={styles.one}><img src={this.props.img1} style={picStyle}/></div>
-        <div style={styles.two}><img src={this.props.imgDiff} style={picStyle}/></div>
+        <div style={styles.two}><img src={'data:image/png;base64,'+this.props.diffImg} style={picStyle}/></div>
         <div style={styles.three}><img src={this.props.img2} style={picStyle}/></div>
         <div style={styles.four}>
           <SpaceThreshold percentOccupied={this.props.percentOccupied} />
