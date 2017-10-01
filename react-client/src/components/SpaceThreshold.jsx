@@ -80,7 +80,8 @@ class SpaceThreshold extends React.Component {
           >
             <TableRow>
               <TableHeaderColumn colSpan="2" style={styles.mainHeader}>
-                Space Threshold by Country
+                <p>Space Threshold by Country</p>
+                <p>Current Occupancy: {this.props.percentOccupied}</p>
               </TableHeaderColumn>
             </TableRow>
             <TableRow>

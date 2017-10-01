@@ -40,12 +40,13 @@ class App extends React.Component {
       }
       axios.post(endpoint+'/chair', {num: this.state.chairCount})
         .then(data => {
-          diffEncoded = JSON.stringify(data.data);
+          diffEncoded = data.data.img;
           this.setState({
             chairCount: this.state.chairCount >= chairLimit ? 1 : this.state.chairCount+1,
             img1: matchingBeforePicture[event.target.value],
             img2: `/static/after-images/${scene}.png`,
-            diffImg: diffEncoded
+            diffImg: diffEncoded,
+            percentOccupied: data.data.percentage
           });
         });
     } else if (event.target.value === 'concrete') {
@@ -54,27 +55,31 @@ class App extends React.Component {
       }
       axios.post(endpoint+'/concrete', {num: this.state.concreteCount})
         .then(data => {
-          diffEncoded = JSON.stringify(data.data);
+          diffEncoded = data.data.img;
           this.setState({
             concreteCount: this.state.concreteCount >= concreteLimit ? 1 : this.state.concreteCount+1,
             img1: matchingBeforePicture[event.target.value],
             img2: `/static/after-images/${scene}.png`,
-            diffImg: diffEncoded
+            diffImg: diffEncoded,
+            percentOccupied: data.data.percentage
+
           });
         });
     } else if (event.target.value === 'staticFigures') {
       if(this.state.staticFiguresCount <= staticFiguresLimit) {
         scene = this.state.staticFiguresCount + 'elevator';
       }
-      console.log('go')
       axios.post(endpoint+'/staticFigures', {num: this.state.staticFiguresCount})
         .then((data)=>{
-          diffEncoded = JSON.stringify(data.data);
+          diffEncoded = data.data.img;
+
           this.setState({
             staticFiguresCount: this.state.staticFiguresCount >= staticFiguresLimit ? 1 : this.state.staticFiguresCount+1,
             img1: matchingBeforePicture[event.target.value],
             img2: `/static/after-images/${scene}.png`,
-            diffImg: diffEncoded
+            diffImg: diffEncoded,
+            percentOccupied: data.data.percentage
+
           });
         })
         .catch((err)=> {
