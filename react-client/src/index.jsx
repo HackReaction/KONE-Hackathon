@@ -27,45 +27,60 @@ class App extends React.Component {
     let chairLimit = 2;
     let concreteLimit = 3;
     let scene;
-    let endpoint = 'localhost:3000'
-    console.log('value: ', event.target.value)
-    if (event.target.value === 'chair') {
-      if(this.state.chairCount <= chairLimit ) {
-        scene = this.state.chairCount + 'chair';
-      }
-      axios.post(endpoint+'/chair', {num: this.state.chairCount});
-      this.setState({
-        chairCount: this.state.chairCount >= chairLimit ? 1 : this.state.chairCount+1
-      })
-    } else if (event.target.value === 'concrete') {
-      if(this.state.concreteCount <= concreteLimit ) {
-        scene = this.state.concreteCount + 'concrete';
-      }
-      axios.post(endpoint+'/concrete', {num: this.state.concreteCount});
-      this.setState({
-        concreteCount: this.state.concreteCount >= concreteLimit ? 1 : this.state.concreteCount+1
-      })
-    } else if (event.target.value === 'staticFigures') {
-      if(this.state.staticFiguresCount <= staticFiguresLimit) {
-        scene = this.state.staticFiguresCount + 'elevator';
-      }
-      axios.post(endpoint+'/staticFigures', {num: this.state.staticFiguresCount}, (err, data)=>{
-        console.log(hi, err, data)
-      });
-      this.setState({
-        staticFiguresCount: this.state.staticFiguresCount >= staticFiguresLimit ? 1 : this.state.staticFiguresCount+1
-      })
-    }
+    let diffEncoded;
+    let endpoint = 'http://localhost:3000';
     let matchingBeforePicture = {
       chair: '/static/before-images/0chair.png',
       concrete: '/static/before-images/0concrete.png',
       staticFigures: '/static/before-images/0elevator.png'
-    }
-
-    this.setState({
-      img1: matchingBeforePicture[event.target.value],
-      img2: `/static/after-images/${scene}.png`
-    });
+    };
+    if (event.target.value === 'chair') {
+      if(this.state.chairCount <= chairLimit ) {
+        scene = this.state.chairCount + 'chair';
+      }
+      axios.post(endpoint+'/chair', {num: this.state.chairCount})
+        .then(data => {
+          diffEncoded = JSON.stringify(data.data);
+          this.setState({
+            chairCount: this.state.chairCount >= chairLimit ? 1 : this.state.chairCount+1,
+            img1: matchingBeforePicture[event.target.value],
+            img2: `/static/after-images/${scene}.png`,
+            diffImg: diffEncoded
+          });
+        });
+    } else if (event.target.value === 'concrete') {
+      if(this.state.concreteCount <= concreteLimit ) {
+        scene = this.state.concreteCount + 'concrete';
+      }
+      axios.post(endpoint+'/concrete', {num: this.state.concreteCount})
+        .then(data => {
+          diffEncoded = JSON.stringify(data.data);
+          this.setState({
+            concreteCount: this.state.concreteCount >= concreteLimit ? 1 : this.state.concreteCount+1,
+            img1: matchingBeforePicture[event.target.value],
+            img2: `/static/after-images/${scene}.png`,
+            diffImg: diffEncoded
+          });
+        });
+    } else if (event.target.value === 'staticFigures') {
+      if(this.state.staticFiguresCount <= staticFiguresLimit) {
+        scene = this.state.staticFiguresCount + 'elevator';
+      }
+      console.log('go')
+      axios.post(endpoint+'/staticFigures', {num: this.state.staticFiguresCount})
+        .then((data)=>{
+          diffEncoded = JSON.stringify(data.data);
+          this.setState({
+            staticFiguresCount: this.state.staticFiguresCount >= staticFiguresLimit ? 1 : this.state.staticFiguresCount+1,
+            img1: matchingBeforePicture[event.target.value],
+            img2: `/static/after-images/${scene}.png`,
+            diffImg: diffEncoded
+          });
+        })
+        .catch((err)=> {
+          console.log('err: ', err)
+        });
+      }
   }
 
   render () {
@@ -78,7 +93,7 @@ class App extends React.Component {
             percentOccupied={this.state.percentOccupied}
             img1={this.state.img1}
             img2={this.state.img2}
-            imgDiff={this.state.imgDiff}
+            diffImg={this.state.diffImg}
           />
         </div>
       </MuiThemeProvider>
