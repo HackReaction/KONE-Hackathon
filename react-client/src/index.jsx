@@ -2,6 +2,11 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import $ from 'jquery';
 import List from './components/List.jsx';
+import Elevator from './components/Elevator.jsx';
+import UpAndDownPanel from './components/UpAndDownPanel.jsx';
+import FloorsPanel from './components/FloorsPanel.jsx';
+import BeforeImage from './components/BeforeImage.jsx';
+// import AfterImage from './components/AfterImage.jsx';
 
 class App extends React.Component {
   constructor(props) {
@@ -29,6 +34,11 @@ class App extends React.Component {
     return (<div>
       <h1>Item List</h1>
       <List items={this.state.items}/>
+      <Elevator/>
+      <UpAndDownPanel />
+      <FloorsPanel />
+      <BeforeImage />
+      
     </div>)
   }
 }
