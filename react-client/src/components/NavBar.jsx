@@ -6,7 +6,16 @@ import {Toolbar, ToolbarGroup, ToolbarSeparator, ToolbarTitle} from 'material-ui
 
 const styles = {
   demoConfigs: {
-    marginLeft: 40
+    marginLeft: 40,
+    color: 'black'
+  },
+  toolbar: {
+    position: 'fixed',
+    width: '100%',
+    top: 0
+  },
+  text: {
+    color: 'black'
   }
 };
 
@@ -24,9 +33,9 @@ class NavBar extends React.Component {
 
   render() {
     return (
-       <Toolbar style={{position: 'fixed', width: '100%', top: 0}}>
+       <Toolbar style={styles.toolbar}>
         <ToolbarGroup firstChild={false}>
-          <ToolbarTitle text="VolumeIQ" />
+          <ToolbarTitle text="VolumeIQ" style={styles.text}/>
           <ToolbarSeparator />
           <ToolbarTitle text="Select a demo elevator:" style={styles.demoConfigs} />
           <DemoConfigs
