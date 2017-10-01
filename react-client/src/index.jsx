@@ -27,12 +27,13 @@ class App extends React.Component {
     let chairLimit = 2;
     let concreteLimit = 3;
     let scene;
+    let endpoint = 'localhost:3000'
     console.log('value: ', event.target.value)
     if (event.target.value === 'chair') {
       if(this.state.chairCount <= chairLimit ) {
         scene = this.state.chairCount + 'chair';
       }
-      axios.post('/chair', {num: this.state.chairCount});
+      axios.post(endpoint+'/chair', {num: this.state.chairCount});
       this.setState({
         chairCount: this.state.chairCount >= chairLimit ? 1 : this.state.chairCount+1
       })
@@ -40,7 +41,7 @@ class App extends React.Component {
       if(this.state.concreteCount <= concreteLimit ) {
         scene = this.state.concreteCount + 'concrete';
       }
-      axios.post('/concrete', {num: this.state.concreteCount});
+      axios.post(endpoint+'/concrete', {num: this.state.concreteCount});
       this.setState({
         concreteCount: this.state.concreteCount >= concreteLimit ? 1 : this.state.concreteCount+1
       })
@@ -48,7 +49,9 @@ class App extends React.Component {
       if(this.state.staticFiguresCount <= staticFiguresLimit) {
         scene = this.state.staticFiguresCount + 'elevator';
       }
-      axios.post('/staticFigures', {num: this.state.staticFiguresCount});
+      axios.post(endpoint+'/staticFigures', {num: this.state.staticFiguresCount}, (err, data)=>{
+        console.log(hi, err, data)
+      });
       this.setState({
         staticFiguresCount: this.state.staticFiguresCount >= staticFiguresLimit ? 1 : this.state.staticFiguresCount+1
       })
