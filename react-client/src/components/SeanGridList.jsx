@@ -9,11 +9,12 @@ const styles = {
     display: 'flex',
     flexWrap: 'wrap',
     // justifyContent: 'space-around',
-    margin: '2% auto'
+    margin: '2% auto',
+    marginLeft: '5%'
   },
   gridList: {
-    width: 300,
-    height: 350,
+    width: '90%',
+    height: '100%',
   },
 };
 
@@ -22,6 +23,11 @@ const tilesData = [
     img: '/static/beforeTurtle.jpeg',
     title: 'Breakfast',
     author: 'jill111',
+  },
+  {
+    img: '/static/beforeTurtle.jpeg',
+    title: 'Tasty burger',
+    author: 'pashminu',
   },
   {
     img: '/static/beforeTurtle.jpeg',
@@ -36,9 +42,10 @@ const tilesData = [
 const SeanGridList = () => (
   <div style={styles.root}>
     <GridList
-      cellHeight={200}
+      cellHeight={300}
       style={styles.gridList} 
-      cols={1}
+      cols={2}
+      padding={10}
     >
       {tilesData.map((tile, idx) => (
         <GridTile
