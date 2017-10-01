@@ -29,24 +29,24 @@ const styles = {
 
 const tableData = [
   {
+    country: 'Saudi Arabia',
+    threshold: 14,
+  },
+  {
+    country: 'Mexico',
+    threshold: 35,
+  },
+  {
+    country: 'China',
+    threshold: 42,
+  },
+  {
     country: 'USA',
-    threshold: 88,
+    threshold: 56,
   },
   {
     country: 'Norway',
     threshold: 100,
-  },
-  {
-    country: 'China',
-    threshold: 71,
-  },
-  {
-    country: 'India',
-    threshold: 71,
-  },
-  {
-    country: 'Saudi Arabia',
-    threshold: 26,
   },
 ];
 
@@ -80,8 +80,7 @@ class SpaceThreshold extends React.Component {
           >
             <TableRow>
               <TableHeaderColumn colSpan="2" style={styles.mainHeader}>
-                <p>Space Threshold by Country</p>
-                <p>Current Occupancy: {this.props.percentOccupied}</p>
+                <p>Space Threshold by Country -- Current Occupancy: {this.props.percentOccupied}%</p>
               </TableHeaderColumn>
             </TableRow>
             <TableRow>

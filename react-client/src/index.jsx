@@ -9,7 +9,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      percentOccupied: 20,
+      percentOccupied: 0,
       name: '',
       count: 0,
       chairCount: 1,
@@ -24,8 +24,8 @@ class App extends React.Component {
 
   handleChange(event) {
     let staticFiguresLimit = 6;
-    let chairLimit = 2;
-    let concreteLimit = 3;
+    let chairLimit = 3;
+    let concreteLimit = 5;
     let scene;
     let diffEncoded;
     let endpoint = 'http://localhost:3000';
