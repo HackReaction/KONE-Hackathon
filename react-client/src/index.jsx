@@ -23,7 +23,8 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = { 
-      items: []
+      items: [],
+      percentOccupied: 20
     }
   }
 
@@ -41,6 +42,12 @@ class App extends React.Component {
     });
   }
 
+  handleChange(event) {
+    this.setState({
+      [event.target.name]: event.target.value
+    });
+  }
+
   render () {
     return (
       <MuiThemeProvider>
@@ -54,7 +61,15 @@ class App extends React.Component {
           <UpAndDownPanel />
           <FloorsPanel />
           <BeforeImage />
-          <SpaceThreshold />
+          <SpaceThreshold percentOccupied={this.state.percentOccupied} />
+          <p>Placeholder for testing occupancy %</p>
+          <input 
+            type="number" 
+            name="percentOccupied" 
+            value={this.state.percentOccupied} 
+            onChange={this.handleChange.bind(this)}
+          >
+          </input>
         </div>
       </MuiThemeProvider>
     );
