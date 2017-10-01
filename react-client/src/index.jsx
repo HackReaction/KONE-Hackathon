@@ -84,20 +84,8 @@ class App extends React.Component {
             </div>
             <div style={testStyleBox}><img src={imgSrc} style={picStyle}/></div>
             <div style={testStyleBox}>
-
               <SpaceThreshold percentOccupied={this.state.percentOccupied} />
-              {/* <p>Placeholder for testing occupancy %</p> */}
-              {/* <input
-                type="number"
-                name="percentOccupied"
-                value={this.state.percentOccupied}
-                onChange={this.handleChange.bind(this)}
-              >
-              </input> */}
-
-
             </div>
-
           </div>
 
 
