@@ -3,13 +3,13 @@ import ReactDOM from 'react-dom';
 import $ from 'jquery';
 import List from './components/List.jsx';
 import Elevator from './components/Elevator.jsx';
-import UpAndDownPanel from './components/UpAndDownPanel.jsx';
 import FloorsPanel from './components/FloorsPanel.jsx';
 import BeforeImage from './components/BeforeImage.jsx';
 import SpaceThreshold from './components/SpaceThreshold.jsx';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import SeanGridList from './components/SeanGridList.jsx';
 import JerryGridList from './components/JerryGridList.jsx';
+import NavBar from './components/NavBar.jsx';
 // import AfterImage from './components/AfterImage.jsx';
 
 const seanBigBox = {
@@ -74,9 +74,9 @@ class App extends React.Component {
     return (
       <MuiThemeProvider>
         <div>
-          <h1>Item List</h1>
-              {/* <SeanGridList /> */}
-
+          <NavBar handleChange={this.handleChange} />
+          <div style={{height: 56}}>
+          </div>
           <div style={seanBigBox}>
             <div>
               <div style={testStyleBox}><img src={imgSrc} style={picStyle}/></div>
@@ -84,39 +84,9 @@ class App extends React.Component {
             </div>
             <div style={testStyleBox}><img src={imgSrc} style={picStyle}/></div>
             <div style={testStyleBox}>
-
               <SpaceThreshold percentOccupied={this.state.percentOccupied} />
-              {/* <p>Placeholder for testing occupancy %</p> */}
-              {/* <input
-                type="number"
-                name="percentOccupied"
-                value={this.state.percentOccupied}
-                onChange={this.handleChange.bind(this)}
-              >
-              </input> */}
-
-
             </div>
-
           </div>
-
-
-
-          <Elevator/>
-          <UpAndDownPanel
-            handleChange={this.handleChange}
-          />
-          <FloorsPanel />
-          <BeforeImage />
-          <SpaceThreshold percentOccupied={this.state.percentOccupied} />
-          <p>Placeholder for testing occupancy %</p>
-          <input
-            type="number"
-            name="percentOccupied"
-            value={this.state.percentOccupied}
-            onChange={this.handleChange.bind(this)}
-          >
-          </input>
         </div>
       </MuiThemeProvider>
     );

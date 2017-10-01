@@ -18,9 +18,15 @@ const styles = {
     width: '100%',
     opacity: 0,
   },
+  button: {
+    marginLeft: 24
+  },
+  separator: {
+
+  }
 };
 
-class UpAndDownPanel extends React.Component {
+class DemoConfigs extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -73,12 +79,10 @@ class UpAndDownPanel extends React.Component {
          primary={true}
          style={styles.button}
          onClick={this.handleConcreteClick}
-
        />
-
      </div>
     )
   }
 }
 
-export default UpAndDownPanel;
+export default DemoConfigs;
