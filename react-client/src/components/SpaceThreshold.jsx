@@ -24,7 +24,11 @@ const styles = {
   mainHeader: {
     fontSize: '125%',
     textAlign: 'center' 
+  },
+  percentage: {
+    color: 'black',
   }
+
 };
 
 const tableData = [
@@ -80,7 +84,7 @@ class SpaceThreshold extends React.Component {
           >
             <TableRow>
               <TableHeaderColumn colSpan="2" style={styles.mainHeader}>
-                <p>Space Threshold by Country -- Current Occupancy: {this.props.percentOccupied}%</p>
+                <p>Space Threshold by Country -- Current Occupancy: <span style={styles.percentage}>{this.props.percentOccupied}%</span></p>
               </TableHeaderColumn>
             </TableRow>
             <TableRow>
