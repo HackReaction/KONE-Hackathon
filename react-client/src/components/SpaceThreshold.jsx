@@ -60,8 +60,7 @@ class SpaceThreshold extends React.Component {
       showRowHover: false,
       selectable: false,
       enableSelectAll: false,
-      deselectOnClickaway: true,
-      height: '300px',
+      deselectOnClickaway: true
     };
   }
   
@@ -86,7 +85,7 @@ class SpaceThreshold extends React.Component {
             </TableRow>
             <TableRow>
               <TableHeaderColumn style={styles.text}>Country</TableHeaderColumn>
-              <TableHeaderColumn style={styles.text}>Occupancy Threshold of Comfort</TableHeaderColumn>
+              <TableHeaderColumn style={styles.text}>Occupancy Threshold</TableHeaderColumn>
             </TableRow>
           </TableHeader>
           <TableBody
