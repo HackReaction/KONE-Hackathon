@@ -8,7 +8,16 @@ import FloorsPanel from './components/FloorsPanel.jsx';
 import BeforeImage from './components/BeforeImage.jsx';
 import SpaceThreshold from './components/SpaceThreshold.jsx';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import ImageBigBox from './components/ImageBigBox.jsx';
 // import AfterImage from './components/AfterImage.jsx';
+
+const seanBigBox = {
+  marginRight: '2%',
+  marginLeft: '2%',
+  width: '96%',
+  border: '1px dotted red',
+  height: '600px'
+}
 
 class App extends React.Component {
   constructor(props) {
@@ -38,6 +47,9 @@ class App extends React.Component {
         <div>
           <h1>Item List</h1>
           <List items={this.state.items}/>
+          <div style={seanBigBox}>
+            <ImageBigBox />
+          </div>
           <Elevator/>
           <UpAndDownPanel />
           <FloorsPanel />
