@@ -40,15 +40,18 @@ const imgSrc = '/static/beforeTurtle.jpeg';
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { 
+    this.state = {
       items: [],
-      percentOccupied: 20
+      percentOccupied: 20,
+      name: '',
+      count: 0
     }
+    this.handleChange = this.handleChange.bind(this);
   }
 
   componentDidMount() {
     $.ajax({
-      url: '/items', 
+      url: '/items',
       success: (data) => {
         this.setState({
           items: data
@@ -64,6 +67,7 @@ class App extends React.Component {
     this.setState({
       [event.target.name]: event.target.value
     });
+    console.log(event.target.name,event.target.value)
   }
 
   render () {
@@ -83,10 +87,10 @@ class App extends React.Component {
 
               <SpaceThreshold percentOccupied={this.state.percentOccupied} />
               {/* <p>Placeholder for testing occupancy %</p> */}
-              {/* <input 
-                type="number" 
-                name="percentOccupied" 
-                value={this.state.percentOccupied} 
+              {/* <input
+                type="number"
+                name="percentOccupied"
+                value={this.state.percentOccupied}
                 onChange={this.handleChange.bind(this)}
               >
               </input> */}
@@ -96,13 +100,23 @@ class App extends React.Component {
 
           </div>
 
-          
+
 
           <Elevator/>
-          <UpAndDownPanel />
+          <UpAndDownPanel
+            handleChange={this.handleChange}
+          />
           <FloorsPanel />
           <BeforeImage />
-
+          <SpaceThreshold percentOccupied={this.state.percentOccupied} />
+          <p>Placeholder for testing occupancy %</p>
+          <input
+            type="number"
+            name="percentOccupied"
+            value={this.state.percentOccupied}
+            onChange={this.handleChange.bind(this)}
+          >
+          </input>
         </div>
       </MuiThemeProvider>
     );
