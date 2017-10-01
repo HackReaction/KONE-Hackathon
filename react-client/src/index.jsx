@@ -6,6 +6,8 @@ import Elevator from './components/Elevator.jsx';
 import UpAndDownPanel from './components/UpAndDownPanel.jsx';
 import FloorsPanel from './components/FloorsPanel.jsx';
 import BeforeImage from './components/BeforeImage.jsx';
+import SpaceThreshold from './components/SpaceThreshold.jsx';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 // import AfterImage from './components/AfterImage.jsx';
 
 class App extends React.Component {
@@ -31,15 +33,19 @@ class App extends React.Component {
   }
 
   render () {
-    return (<div>
-      <h1>Item List</h1>
-      <List items={this.state.items}/>
-      <Elevator/>
-      <UpAndDownPanel />
-      <FloorsPanel />
-      <BeforeImage />
-      
-    </div>)
+    return (
+      <MuiThemeProvider>
+        <div>
+          <h1>Item List</h1>
+          <List items={this.state.items}/>
+          <Elevator/>
+          <UpAndDownPanel />
+          <FloorsPanel />
+          <BeforeImage />
+          <SpaceThreshold />
+        </div>
+      </MuiThemeProvider>
+    );
   }
 }
 
