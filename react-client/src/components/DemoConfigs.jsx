@@ -44,12 +44,12 @@ class DemoConfigs extends React.Component {
 
   handleChairClick() {
     console.log("chairs clicked");
-    this.props.handleChange({target:{name:'name',value:'chairs'}});
+    this.props.handleChange({target:{name:'name',value:'chair'}});
   }
 
   handleFiguresClick() {
     console.log("figures clicked");
-    this.props.handleChange({target:{name:'name',value:'figures'}});
+    this.props.handleChange({target:{name:'name',value:'staticFigures'}});
   }
 
   handleConcreteClick() {
