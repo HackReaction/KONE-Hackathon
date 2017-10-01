@@ -66,16 +66,8 @@ class App extends React.Component {
         <div>
           <h1>Item List</h1>
           <List items={this.state.items}/>
-          <div style={seanBigBox}>
-            <div style={testStyleBox}>
               <SeanGridList />
-            </div>
-            <div style={testStyleBox}>
-              <JerryGridList />
-            </div>
 
-
-          </div>
           <Elevator/>
           <UpAndDownPanel />
           <FloorsPanel />
