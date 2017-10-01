@@ -55,20 +55,20 @@ const styles = {
 class DemoContent extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { 
+    this.state = {
     }
   }
 
   render () {
     return (
       <div style={styles.wrapper}>
-        <div style={styles.one}><img src={imgSrc} style={picStyle}/></div>
-        <div style={styles.two}><img src={imgSrc} style={picStyle}/></div>
-        <div style={styles.three}><img src={imgSrc} style={picStyle}/></div>
+        <div style={styles.one}><img src={this.props.img1} style={picStyle}/></div>
+        <div style={styles.two}><img src={this.props.imgDiff} style={picStyle}/></div>
+        <div style={styles.three}><img src={this.props.img2} style={picStyle}/></div>
         <div style={styles.four}>
           <SpaceThreshold percentOccupied={this.props.percentOccupied} />
         </div>
-      </div>  
+      </div>
     )
   }
 }
